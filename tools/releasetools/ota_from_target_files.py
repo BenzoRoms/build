@@ -92,6 +92,11 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
   --stash_threshold <float>
       Specifies the threshold that will be used to compute the maximum
       allowed stash size (defaults to 0.8).
+
+  --backup <boolean>
+      Enable or disable the execution of backuptool.sh.
+      Disabled by default.
+
 """
 
 import sys
@@ -134,6 +139,7 @@ OPTIONS.full_bootloader = False
 # Stash size cannot exceed cache_size * threshold.
 OPTIONS.cache_size = None
 OPTIONS.stash_threshold = 0.8
+OPTIONS.backuptool = False
 
 def MostPopularKey(d, default):
   """Given a dict, return the key corresponding to the largest
@@ -587,6 +593,9 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   device_specific.FullOTA_InstallBegin()
 
+  if OPTIONS.backuptool:
+    script.RunBackup("backup")
+
   system_progress = 0.75
 
   if OPTIONS.wipe_user_data:
@@ -657,6 +666,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   common.CheckSize(boot_img.data, "boot.img", OPTIONS.info_dict)
   common.ZipWriteStr(output_zip, "boot.img", boot_img.data)
+
+  if OPTIONS.backuptool:
+    script.ShowProgress(0.02, 10)
+    script.RunBackup("restore")
 
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
@@ -1544,6 +1557,8 @@ def main(argv):
       OPTIONS.updater_binary = a
     elif o in ("--no_fallback_to_full",):
       OPTIONS.fallback_to_full = False
+    elif o in ("--backup"):
+      OPTIONS.backuptool = bool(a.lower() == 'true')
     elif o == "--stash_threshold":
       try:
         OPTIONS.stash_threshold = float(a)
@@ -1574,6 +1589,7 @@ def main(argv):
                                  "oem_settings=",
                                  "verify",
                                  "no_fallback_to_full",
+                                 "backup=",
                                  "stash_threshold=",
                              ], extra_option_handler=option_handler)
 
