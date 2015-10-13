@@ -1596,7 +1596,15 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CUSTOM_TARGET_PACKAGE) > $(CUSTOM_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_CYN}"Package Complete: $(CUSTOM_TARGET_PACKAGE)"${CL_RST}
+	@echo -e ${CL_CYN}""${CL_RED}
+	@echo -e ${CL_CYN}"▄▄▄▄· ▄▄▄ . ▐ ▄ ·▄▄▄▄•          ▄▄▄        • ▌ ▄ ·.            "${CL_CYN}
+	@echo -e ${CL_CYN}"▐█ ▀█▪▀▄.▀·•█▌▐█▪▀·.█▌▪         ▀▄ █·▪     ·██ ▐███▪                  "${CL_CYN}
+	@echo -e ${CL_CYN}"▐█▀▀█▄▐▀▀▪▄▐█▐▐▌▄█▀▀▀• ▄█▀▄     ▐▀▀▄  ▄█▀▄ ▐█ ▌▐▌▐█·   "${CL_CYN}
+	@echo -e ${CL_CYN}"██▄▪▐█▐█▄▄▌██▐█▌█▌▪▄█▀▐█▌.▐▌    ▐█•█▌▐█▌.▐▌██ ██▌▐█▌"${CL_CYN}
+	@echo -e ${CL_CYN}"·▀▀▀▀  ▀▀▀ ▀▀ █▪·▀▀▀ • ▀█▄▀▪    .▀  ▀ ▀█▄▀▪▀▀  █▪▀▀▀             "${CL_CYN}
+	@echo -e ${CL_CYN}"                                                              "${CL_CYN}
+	@echo -e ${CL_CYN}""${CL_CYN}
+	@echo -e ${CL_GRN}"Package Complete: $(CUSTOM_TARGET_PACKAGE)"${CL_RST}
 
 endif    # recovery_fstab is defined
 endif    # TARGET_NO_KERNEL != true
