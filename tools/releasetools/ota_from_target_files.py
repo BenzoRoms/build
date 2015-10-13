@@ -650,6 +650,17 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.SetPermissionsRecursive("/tmp/install", 0, 0, 0755, 0644, None, None)
   script.SetPermissionsRecursive("/tmp/install/bin", 0, 0, 0755, 0755, None, None)
 
+  script.Print("                                            ")
+  script.Print("._______ ._______.______  .______ ._______  ")
+  script.Print(": __   / : .____/:      \ \____  |: .___  \ ")
+  script.Print("|  |>  \ | : _/\ |       |/  ____|| :   |  |")
+  script.Print("|  |>   \|   /  \|   |   |\      ||     :  |")
+  script.Print("|_______/|_.: __/|___|   | \__:__| \_. ___/ ")
+  script.Print("            :/       |___|    :      :/     ")
+  script.Print(" Benzo Rom                           :      ")
+  script.Print("                                            ")
+  script.Print("Running backup scripts and setting permissions...")
+
   if OPTIONS.backuptool:
     script.Mount("/system")
     script.RunBackup("backup")
@@ -736,6 +747,8 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     if block_based:
       script.Unmount("/system")
 
+  script.Print(" ")
+  script.Print("Flashing benzoCore..")
   script.ShowProgress(0.05, 5)
   script.WriteRawImage("/boot", "boot.img")
 
