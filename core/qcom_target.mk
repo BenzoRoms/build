@@ -46,3 +46,4 @@ $(call project-set-path,qcom-display,hardware/qcom/display/$(TARGET_BOARD_PLATFO
 $(call qcom-set-path-variant,GPS,gps)
 $(call project-set-path,qcom-media,hardware/qcom/media/default)
 $(call qcom-set-path-variant,SENSORS,sensors)
+endif
