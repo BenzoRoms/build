@@ -786,6 +786,11 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
     if block_based:
       script.Unmount("/system")
 
+  script.Print("Flashing Viper4Android...")
+  common.ZipWriteStr(output_zip, "v4a/v4a.zip",
+                 ""+input_zip.read("SYSTEM/addon.d/v4a.zip"))
+  script.FlashV4A()
+
   script.Print(" ")
   script.Print("Flashing benzoCore..")
   script.ShowProgress(0.05, 5)
