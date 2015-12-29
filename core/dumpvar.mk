@@ -83,6 +83,10 @@ $(info   ARCH_VARIANT=$(TARGET_ARCH_VARIANT))
 $(info   CPU_VARIANT=$(TARGET_CPU_VARIANT))
 $(info   GCC_VERSION=$(SM_AND_VERSION))
 $(info   GCC_VERSION_KERNEL=$(SM_KERNEL_VERSION))
+ifeq ($(TARGET_DRAGONTC_VERSION),)
+else
+$(info   CLANG_VERSION=$(TARGET_DRAGONTC_VERSION))
+endif
 $(info   OPTIMIZATIONS=$(GCC_OPTIMIZATION_LEVELS))
 $(info =======================================================)
 endif
