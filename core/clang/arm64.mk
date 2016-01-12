@@ -21,7 +21,6 @@ CLANG_CONFIG_arm64_UNKNOWN_CFLAGS := \
   -fno-partial-inlining \
   -fno-strict-volatile-bitfields \
   -fno-align-jumps \
-  -Wa,--noexecstack \
   -mfpu=neon-vfpv4 \
   -Wno-unused-local-typedefs \
   -fpredictive-commoning \
