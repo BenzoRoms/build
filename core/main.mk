@@ -148,7 +148,7 @@ javac_version_str := $(shell unset _JAVA_OPTIONS && javac -version 2>&1)
 
 # Check for the correct version of java, should be 1.7 by
 # default, and 1.8 if EXPERIMENTAL_USE_JAVA8 is set
-ifneq ($(EXPERIMENTAL_USE_JAVA8),)
+ifneq ($(USE_JAVA8),)
 required_version := "1.8.x"
 required_javac_version := "1.8"
 java_version := $(shell echo '$(java_version_str)' | grep '[ "]1\.8[\. "$$]')
@@ -182,6 +182,9 @@ ifeq ($(HOST_OS), linux)
 requires_openjdk := true
 endif
 
+ifneq ($(USE_JAVA8),)
+requires_openjdk := false
+endif
 
 # Check for the current jdk
 ifeq ($(requires_openjdk), true)
