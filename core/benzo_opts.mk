@@ -128,6 +128,7 @@ NO_OPTIMIZATIONS += \
 	libpdfiumcore_32 \
 	libfdlibm \
 	libnfc-nci \
+	libssh \
 	libxml2 \
 	libinput \
 	libnfc-nci \
@@ -853,6 +854,7 @@ LOCAL_DISABLE_STRICT := \
 	mm-vdec-omx-test \
 	mkbootimg \
 	mkbootfs \
+	libssh \
 	libext2fs \
 	simg2img \
 	simg2img_host \
