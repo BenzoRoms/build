@@ -720,6 +720,10 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
                  ""+input_zip.read("SYSTEM/addon.d/UPDATE-SuperSU.zip"))
   script.FlashSuperSU()
 
+  script.Mount("/system")
+  script.DeleteFiles(["/system/addon.d/UPDATE-SuperSU.zip",
+                      "/system/addon.d/v4a.zip"])
+
   script.ShowProgress(0.2, 10)
   device_specific.FullOTA_InstallEnd()
 
