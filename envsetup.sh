@@ -498,7 +498,7 @@ function print_lunch_menu()
 
     if [ "z${CUSTOM_DEVICES_ONLY}" != "z" ]; then
        echo " "
-       echo "... dont worry we'll make bacon toghether!!"
+       echo "... dont worry we'll make benzo toghether!!"
     fi
 
     echo
@@ -508,7 +508,7 @@ function brunch()
 {
     breakfast $*
     if [ $? -eq 0 ]; then
-        time mka bacon
+        time mka benzo
     else
         echo "No such item in brunch menu. Try 'breakfast'"
         return 1
