@@ -1960,9 +1960,9 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE)
 
 CUSTOM_TARGET_PACKAGE := $(PRODUCT_OUT)/benzo-$(ANDROID_NAME)-$(ROM_VERSION).zip
 
-.PHONY: otapackage bacon bootzip
+.PHONY: otapackage benzo bootzip
 otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
-bacon: otapackage
+benzo: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CUSTOM_TARGET_PACKAGE) > $(CUSTOM_TARGET_PACKAGE).md5sum
 	@echo -e ""
