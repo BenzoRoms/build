@@ -30,9 +30,7 @@ ifneq ($(USE_CCACHE),)
   # We don't really use system headers much so the rootdir is
   # fine; ensures these paths are relative for all Android trees
   # on a workstation.
-  ifeq ($(CCACHE_BASEDIR),)
-    export CCACHE_BASEDIR := $(ANDROID_BUILD_TOP)
-  endif
+  export CCACHE_BASEDIR := /
 
   # Workaround for ccache with clang.
   # See http://petereisentraut.blogspot.com/2011/09/ccache-and-clang-part-2.html
@@ -67,12 +65,6 @@ ifneq ($(USE_CCACHE),)
     ifndef CXX_WRAPPER
       CXX_WRAPPER := $(ccache)
     endif
-    ifeq ($(ANDROID_CCACHE_DIR), $(CCACHE_DIR))
-      ifneq ($(ANDROID_CCACHE_SIZE),)
-        ACCSIZE_RESULT := $(shell $(ccache) -M$(ANDROID_CCACHE_SIZE))
-      endif
-    endif
     ccache =
-    ACCSIZE_RESULT =
   endif
 endif
