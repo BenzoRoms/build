@@ -85,7 +85,7 @@ $(info   GCC_VERSION=$(SM_AND_VERSION))
 $(info   GCC_VERSION_KERNEL=$(SM_KERNEL_VERSION))
 ifeq ($(TARGET_DRAGONTC_VERSION),)
 else
-$(info   CLANG_VERSION=$(TARGET_DRAGONTC_VERSION))
+$(info   CLANG_VERSION=$(DTC_VER))
 endif
 $(info   OPTIMIZATIONS=$(GCC_OPTIMIZATION_LEVELS))
 $(info =======================================================)
