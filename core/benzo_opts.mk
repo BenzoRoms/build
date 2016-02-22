@@ -15,15 +15,19 @@
 # limitations under the License.
 #
 NOOP_BLUETOOTH := \
-	libbluetooth_jni_32 \
-	bluetooth.default_32 \
-	libbluetooth_jni \
+	audio.a2dp.default \
+	bdt \
+	bdtest \
+	bdAddrLoader \
 	bluetooth.mapsapi \
 	bluetooth.default \
 	bluetooth.mapsapi \
-	libbt-brcm_stack \
-	audio.a2dp.default \
+	bluetooth.default_32 \
+	libbluetooth_jni \
+	libbluetooth_jni_32 \
 	libbt-brcm_gki \
+	libbt-brcm_stack \
+	libbt-hci \
 	libbt-utils \
 	libbt-qcom_sbc_decoder \
 	libbt-brcm_bta \
@@ -32,109 +36,103 @@ NOOP_BLUETOOTH := \
 	libbtprofile \
 	libbtdevice \
 	libbtcore \
-	bdt \
-	bdtest \
-	libbt-hci \
 	libosi \
-	ositests \
-	libbluetooth_jni \
 	net_test_osi \
 	net_test_device \
 	net_test_btcore \
 	net_bdtool \
 	net_hci \
-	bdAddrLoader \
-	camera.msm8084 \
-	gps.msm8084 \
-	gralloc.msm8084 \
-	keystore.msm8084 \
-	memtrack.msm8084 \
-	hwcomposer.msm8084 \
-	audio.primary.msm8084
+	ositests
+
+NO_ART_OPTS := \
+	libart \
+	libartd \
+	libart-disassembler \
+	libart-compiler \
+	libsigchain \
+	dalvikvm \
+	dex2oat \
+	dex2oatd \
+	oatdump \
+	patchoat
 
 NO_OPTIMIZATIONS += \
-	pppd \
-	libmcldScript \
-	libmcldMC \
-	libmedia_jni \
-	libmedia_jni_32 \
-	libnfc-nci_32 \
-	fsck.f2fs \
-	racoon \
-	dex2oatd \
-	libc_tzcode \
+	libandroid_runtime_32 \
 	libbinder \
 	libbypass \
-	libandroid_runtime_32 \
-	libperfprofdcore \
-	libwebrtc_spl \
-	libFraunhoferAAC \
-	libmincrypt \
-	libc++abi \
-	nfc_nci.bcm2079x.default \
-	libjni_latinime_common_static \
-	libcompiler_rt \
-	libnativebridge \
+	libc_tzcode \
 	libc++ \
-	libRSSupport \
-	libskia \
-	libxml2 \
-	netd \
-	libscrypt_static \
-	libRSCpuRef \
-	libRSDriver \
+	libc++abi \
+	libcrypto \
+	libcrypto-host_32 \
+	libcompiler_rt \
+	libdex \
+	libfdlibm \
+	libft2 \
+	libFraunhoferAAC \
+	libharfbuzz_ng \
+	libharfbuzz_ng_32 \
+	libhwui \
+	libicui18n \
+	libinput \
+	libjni_latinime_common_static \
+	libloc_core \
+	liblog \
+	libmedia_jni \
 	libmm-qcamera \
 	libmmcamera_interface \
 	libmmjpeg_interface_32 \
 	libmmcamera_interface_32 \
 	libmmjpeg_interface \
+	libmcldScript \
+	libmcldMC \
+	libmedia_jni \
+	libmedia_jni_32 \
+	libmincrypt \
+	libnativebridge \
+	libnfc-nci_32 \
+	libnfc-nci \
+	libnfc_nci_jni \
+	libpcap \
+	libpdfiumcore \
+	libpdfium \
+	libperfprofdcore \
+	libqdutils \
+	libqomx_core \
+	libpdfiumcore_32 \
+	libRSCpuRef \
+	libRSDriver \
+	libRSSupport \
+	libril \
+	librilutils \
+	librilutils_static \
+	libscrypt_static \
+	libsfntly \
+	libskia \
+	libsqlite_jni_32 \
+	libselinux \
+	libsfntly \
+	libssh \
+	libwebrtc_spl \
+	libwebp-decode \
+	libwebp-encode \
+	libxml2 \
+	fsck.f2fs \
+	linker \
+	logd \
+	logcat \
+	make_f2fs \
 	mm-qcamera-app \
 	mm-qcamera-app_32 \
 	mm-jpeg-interface-test \
 	mm-qcamera-app \
-	libqomx_core \
-	libwebp-decode \
-	libwebp-encode \
-	libsfntly \
 	mdnsd \
-	make_f2fs \
-	linker \
-	libft2 \
-	libhwui \
-	libril \
-	librilutils \
-	librilutils_static \
-	libpcap \
-	liblog \
-	logd \
-	logcat \
-	libdex \
-	libFraunhoferAAC \
-	libicui18n \
-	libselinux \
-	libsfntly \
-	libharfbuzz_ng \
-	libpdfiumcore \
-	libpdfium \
+	nfc_nci.bcm2079x.default \
+	netd \
+	pppd \
+	racoon \
 	rsg-generator \
-	libloc_core \
-	libqdutils \
-	libRSCpuRef \
-	libmedia_jni \
-	libcrypto \
-	libcrypto-host_32 \
-	libsqlite_jni_32 \
-	libharfbuzz_ng_32 \
-	libpdfiumcore_32 \
-	libfdlibm \
-	libnfc-nci \
-	libssh \
-	libxml2 \
-	libinput \
-	libnfc-nci \
-	libnfc_nci_jni \
 	$(NOOP_BLUETOOTH)
-
 
 
 # No error
@@ -186,12 +184,11 @@ ifeq ($(GRAPHITE_OPTS),true)
  ifndef LOCAL_IS_HOST_MODULE
   ifeq ($(LOCAL_CLANG),)
   LOCAL_DISABLE_GRAPHITE := \
+	fio \
 	libinput \
-	dex2oatd \
 	libncurses \
 	libhwui \
 	libandroid_runtime \
-	libsigchain \
 	libunwind \
 	libFFTEm \
 	libicui18n \
@@ -206,9 +203,7 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libharfbuzz_ng \
 	libpdfiumcore \
 	libpdfium \
-	nfc_nci.bcm2079x.default \
 	libjni_filtershow_filters \
-	fio \
 	libwebrtc_spl \
 	libpcap \
 	libFraunhoferAAC \
@@ -216,47 +211,11 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libwebp-encode \
 	libsfntly \
 	libwebrtc_apm_utility \
-	libbluetooth_jni \
-	bluetooth.mapsapi \
-	bluetooth.default \
-	bluetooth.mapsapi \
-	libbluetooth_jni_32 \
-	libbt-brcm_stack \
-	audio.a2dp.default \
-	libbt-brcm_gki \
-	libbt-utils \
-	libbt-qcom_sbc_decoder \
-	libbt-brcm_bta \
-	libbt-brcm_stack \
-	libbt-vendor \
-	libbtprofile \
-	libbtdevice \
-	libbtcore \
-	bdt \
-	bdtest \
-	libbt-hci \
-	libosi \
-	ositests \
-	libbluetooth_jni \
-	net_test_osi \
-	net_test_device \
-	net_test_btcore \
-	net_bdtool \
-	net_hci \
-	bdAddrLoader \
-	camera.msm8084 \
-	gps.msm8084 \
-	gralloc.msm8084 \
-	keystore.msm8084 \
-	memtrack.msm8084 \
-	hwcomposer.msm8084 \
-	audio.primary.msm8084 \
 	libmmcamera_interface_32 \
 	libmmjpeg_interface_32 \
 	libmmjpeg_interface \
-	mm-qcamera-app \
-	mm-qcamera-app_32 \
-	libmmcamera_interface_32 \
+	nfc_nci.bcm2079x.default \
+	$(NO_ART_OPTS) \
 	$(NO_OPTIMIZATIONS)
 
    ifeq ($(filter $(LOCAL_DISABLE_GRAPHITE), $(LOCAL_MODULE)),)
@@ -311,42 +270,7 @@ endif
 
 # IPA Analyser
 ifeq ($(ENABLE_IPA_ANALYSER),true)
-LOCAL_DISABLE_IPA := \
-	dex2oatd \
-	libbluetooth_jni \
-	bluetooth.mapsapi \
-	bluetooth.default \
-	bluetooth.mapsapi \
-	libbt-brcm_stack \
-	audio.a2dp.default \
-	libbt-brcm_gki \
-	libbt-utils \
-	libbt-qcom_sbc_decoder \
-	libbt-brcm_bta \
-	libbt-brcm_stack \
-	libbt-vendor \
-	libbtprofile \
-	libbtdevice \
-	libbtcore \
-	bdt \
-	bdtest \
-	libbt-hci \
-	libosi \
-	ositests \
-	libbluetooth_jni \
-	net_test_osi \
-	net_test_device \
-	net_test_btcore \
-	net_bdtool \
-	net_hci \
-	bdAddrLoader \
-	camera.msm8084 \
-	gps.msm8084 \
-	gralloc.msm8084 \
-	keystore.msm8084 \
-	memtrack.msm8084 \
-	hwcomposer.msm8084 \
-	audio.primary.msm8084
+LOCAL_DISABLE_IPA := $(NO_ART_OPTS)
 
  ifeq (,$(filter true,$(LOCAL_CLANG)))
    ifneq (1,$(words $(filter $(LOCAL_DISABLE_IPA),$(LOCAL_MODULE))))
@@ -419,11 +343,9 @@ endif
 ifeq ($(CORTEX_TUNINGS),true)
  ifndef LOCAL_IS_HOST_MODULE
  LOCAL_DISABLE_CORTEX := \
-	libbluetooth_jni_32 \
-	libmmcamera_interface_32 \
-	libmmjpeg_interface_32 \
 	libmcldSupport \
 	libmcldScript \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -446,13 +368,7 @@ ifeq ($(ENABLE_PTHREAD),true)
 LOCAL_DISABLE_PTHREAD := \
 	libc_netbsd \
 	libc_tzcode \
-	dex2oatd \
-	libbluetooth_jni_32 \
-	libmmcamera_interface_32 \
-	libmmjpeg_interface_32 \
-	libmmjpeg_interface \
-	mm-qcamera-app \
-	mm-qcamera-app_32 \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -475,14 +391,9 @@ endif
 # OpenMP
 ifeq ($(ENABLE_GOMP),true)
 LOCAL_DISABLE_GOMP := \
-	dex2oatd \
 	libc_tzcode \
 	libbluetooth_jni_32 \
-	libmmcamera_interface_32 \
-	libmmjpeg_interface_32 \
-	libmmjpeg_interface \
-	mm-qcamera-app \
-	mm-qcamera-app_32 \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -513,13 +424,7 @@ ifeq ($(ENABLE_SANITIZE),true)
 DISABLE_SANITIZE_LEAK := \
 	libc_dns \
 	libc_tzcode \
-	dex2oatd \
-	libbluetooth_jni_32 \
-	libmmcamera_interface_32 \
-	libmmjpeg_interface_32 \
-	libmmjpeg_interface \
-	mm-qcamera-app \
-	mm-qcamera-app_32 \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -541,15 +446,9 @@ endif
 # Extra flags
 ifeq ($(ENABLE_EXTRAGCC),true)
 LOCAL_DISABLE_EXTRAGCC := \
-	dex2oatd \
 	libc_tzcode \
-	libbluetooth_jni_32 \
-	libmmcamera_interface_32 \
-	libmmjpeg_interface_32 \
-	libmmjpeg_interface \
-	mm-qcamera-app \
-	mm-qcamera-app_32 \
 	libbinder \
+	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -714,7 +613,6 @@ LOCAL_FORCE_DISABLE_STRICT := \
 	libdiskconfig \
 	logd \
 	libjavacore \
-	camera.msm8084 \
 	libstagefright_webm \
 	libc_bionic_ndk \
 	libc_dns \
@@ -735,7 +633,6 @@ LOCAL_FORCE_DISABLE_STRICT := \
 
 LOCAL_DISABLE_STRICT := \
 	clatd_test \
-	dex2oatd \
 	libdw \
 	libmmjpeg_interface \
 	mm-qcamera-app_32 \
@@ -774,9 +671,6 @@ LOCAL_DISABLE_STRICT := \
 	libtwrpmtp \
 	libfusetwrp \
 	libguitwrp \
-	libart \
-	libartd \
-	libart-compiler \
 	libpcre \
 	libaapt \
 	libz \
@@ -834,12 +728,9 @@ LOCAL_DISABLE_STRICT := \
 	aapt \
 	aidl \
 	dnsmasq \
-	dex2oat \
 	fastboot \
 	logd \
 	mdnsd \
-	oatdump \
-	patchoat \
 	clatd \
 	fio \
 	img2simg \
@@ -850,7 +741,6 @@ LOCAL_DISABLE_STRICT := \
 	linker \
 	net_net_gyp \
 	linker \
-	camera.msm8084 \
 	mm-vdec-omx-test \
 	mkbootimg \
 	mkbootfs \
@@ -869,6 +759,7 @@ LOCAL_DISABLE_STRICT := \
 	libnfc-nci \
 	libnfc_nci_jni \
 	fs_config_generate_angler \
+	$(NO_ART_OPTS) \
 	$(NO_OPTIMIZATIONS)
 
  ifneq ($(filter $(LOCAL_DISABLE_STRICT),$(LOCAL_MODULE)),)
