@@ -6,15 +6,19 @@ ARCH_ARM_HAVE_VFP               := true
 ARCH_ARM_HAVE_VFP_D32           := true
 ARCH_ARM_HAVE_NEON              := true
 
+local_arch_has_lpae := false
+
 ifneq (,$(filter cortex-a15 krait denver,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
 	# TODO: krait is not a cortex-a15, we set the variant to cortex-a15 so that
 	#       hardware divide operations are generated. This should be removed and a
 	#       krait CPU variant added to GCC/clang.
 	arch_variant_cflags := -mcpu=cortex-a15 -mfpu=neon-vfpv4 -mvectorize-with-neon-quad
 
-	# Fake ARM compiler flags as these processors support LPAE and VFP4 which GCC/clang
+	# Fake ARM compiler flags as these processors support VFP4 which GCC/clang
 	# doesn't advertise.
-	arch_variant_cflags += -D__ARM_FEATURE_LPAE=1 -D__ARM_FEATURE_VFP4=1
+	arch_variant_cflags += -D__ARM_FEATURE_VFP4=1
+
+	local_arch_has_lpae := true
 	arch_variant_ldflags := \
 		-Wl,--no-fix-cortex-a8
 else
@@ -25,6 +29,8 @@ ifeq ($(strip $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)),cortex-a8)
 else
 ifneq (,$(filter cortex-a7 cortex-a53 cortex-a53.a57,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
 	arch_variant_cflags := -mcpu=cortex-a7 -mfpu=neon
+
+	local_arch_has_lpae := true
 	arch_variant_ldflags := \
 		-Wl,--no-fix-cortex-a8
 else
@@ -35,6 +41,16 @@ else
 endif
 endif
 endif
+
+ifeq (true,$(local_arch_has_lpae))
+	# Fake an ARM compiler flag as these processors support LPAE which GCC/clang
+	# don't advertise.
+	# TODO This is a hack and we need to add it for each processor that supports LPAE until some
+	# better solution comes around. See Bug 27340895
+	arch_variant_cflags += -D__ARM_FEATURE_LPAE=1
+endif
+
+local_arch_has_lpae :=
 
 arch_variant_cflags += \
     -mfloat-abi=softfp
