@@ -587,6 +587,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
 
   has_recovery_patch = HasRecoveryPatch(input_zip)
   block_based = OPTIONS.block_based and has_recovery_patch
+  has_vendor_partition = "/vendor" in OPTIONS.info_dict["fstab"]
 
   metadata["ota-type"] = "BLOCK" if block_based else "FILE"
 
@@ -668,8 +669,12 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   if OPTIONS.backuptool:
     script.Mount("/system")
+    if has_vendor_partition:
+      script.Mount("/vendor")
     script.RunBackup("backup")
     script.Unmount("/system")
+    if has_vendor_partition:
+      script.Unmount("/vendor")
 
   system_progress = 0.75
 
@@ -746,11 +751,13 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
 
   if OPTIONS.backuptool:
     script.ShowProgress(0.02, 10)
-    if block_based:
-      script.Mount("/system")
+    script.Mount("/system")
+    if has_vendor_partition:
+      script.Mount("/vendor")
     script.RunBackup("restore")
-    if block_based:
-      script.Unmount("/system")
+    script.Unmount("/system")
+    if has_vendor_partition:
+      script.Unmount("/vendor")
 
   script.Print("Flashing Viper4Android...")
   common.ZipWriteStr(output_zip, "v4a/v4a.zip",
