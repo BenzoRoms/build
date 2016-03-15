@@ -203,6 +203,7 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libharfbuzz_ng \
 	libpdfiumcore \
 	libpdfium \
+	libjemalloc \
 	libjni_filtershow_filters \
 	libwebrtc_spl \
 	libpcap \
@@ -211,6 +212,7 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libwebp-encode \
 	libsfntly \
 	libwebrtc_apm_utility \
+	libmediandk \
 	libmmcamera_interface_32 \
 	libmmjpeg_interface_32 \
 	libmmjpeg_interface \
@@ -448,6 +450,8 @@ ifeq ($(ENABLE_EXTRAGCC),true)
 LOCAL_DISABLE_EXTRAGCC := \
 	libc_tzcode \
 	libbinder \
+	libjemalloc \
+	libmediandk \
 	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
@@ -626,6 +630,7 @@ LOCAL_FORCE_DISABLE_STRICT := \
 	libandroidfw \
 	libosi \
 	libnetlink \
+	libRS \
 	clatd \
 	ip \
 	libc_nomalloc \
