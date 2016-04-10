@@ -44,18 +44,6 @@ NOOP_BLUETOOTH := \
 	net_hci \
 	ositests
 
-NO_ART_OPTS := \
-	libart \
-	libartd \
-	libart-disassembler \
-	libart-compiler \
-	libsigchain \
-	dalvikvm \
-	dex2oat \
-	dex2oatd \
-	oatdump \
-	patchoat
-
 NO_OPTIMIZATIONS += \
 	libandroid_runtime_32 \
 	libbinder \
@@ -217,7 +205,6 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libmmjpeg_interface_32 \
 	libmmjpeg_interface \
 	nfc_nci.bcm2079x.default \
-	$(NO_ART_OPTS) \
 	$(NO_OPTIMIZATIONS)
 
    ifeq ($(filter $(LOCAL_DISABLE_GRAPHITE), $(LOCAL_MODULE)),)
@@ -272,7 +259,7 @@ endif
 
 # IPA Analyser
 ifeq ($(ENABLE_IPA_ANALYSER),true)
-LOCAL_DISABLE_IPA := $(NO_ART_OPTS)
+LOCAL_DISABLE_IPA :=
 
  ifeq (,$(filter true,$(LOCAL_CLANG)))
    ifneq (1,$(words $(filter $(LOCAL_DISABLE_IPA),$(LOCAL_MODULE))))
@@ -347,7 +334,6 @@ ifeq ($(CORTEX_TUNINGS),true)
  LOCAL_DISABLE_CORTEX := \
 	libmcldSupport \
 	libmcldScript \
-	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -370,7 +356,6 @@ ifeq ($(ENABLE_PTHREAD),true)
 LOCAL_DISABLE_PTHREAD := \
 	libc_netbsd \
 	libc_tzcode \
-	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -394,8 +379,10 @@ endif
 ifeq ($(ENABLE_GOMP),true)
 LOCAL_DISABLE_GOMP := \
 	libc_tzcode \
-	libbluetooth_jni_32 \
-	$(NO_ART_OPTS) \
+	libscrypt_static \
+	libperfprofdcore \
+	libperfprofdutils \
+	perfprofd \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -426,7 +413,6 @@ ifeq ($(ENABLE_SANITIZE),true)
 DISABLE_SANITIZE_LEAK := \
 	libc_dns \
 	libc_tzcode \
-	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -452,7 +438,6 @@ LOCAL_DISABLE_EXTRAGCC := \
 	libbinder \
 	libjemalloc \
 	libmediandk \
-	$(NO_ART_OPTS) \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
@@ -638,6 +623,16 @@ LOCAL_FORCE_DISABLE_STRICT := \
 
 LOCAL_DISABLE_STRICT := \
 	clatd_test \
+	libart \
+	libartd \
+	libart-disassembler \
+	libart-compiler \
+	libsigchain \
+	dalvikvm \
+	dex2oat \
+	dex2oatd \
+	oatdump \
+	patchoat \
 	libdw \
 	libmmjpeg_interface \
 	mm-qcamera-app_32 \
@@ -764,7 +759,6 @@ LOCAL_DISABLE_STRICT := \
 	libnfc-nci \
 	libnfc_nci_jni \
 	fs_config_generate_angler \
-	$(NO_ART_OPTS) \
 	$(NO_OPTIMIZATIONS)
 
  ifneq ($(filter $(LOCAL_DISABLE_STRICT),$(LOCAL_MODULE)),)
