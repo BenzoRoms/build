@@ -1,5 +1,5 @@
 ifeq ($(USE_SYSTEM_NINJA),)
-  NINJA ?= prebuilts/ninja/$(HOST_PREBUILT_TAG)/ninja
+  NINJA ?= prebuilts/build-tools/$(HOST_PREBUILT_TAG)/bin/ninja
 else
   NINJA ?= $(shell which ninja)
 endif
