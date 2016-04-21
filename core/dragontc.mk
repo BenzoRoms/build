@@ -166,9 +166,9 @@ endif
 
 # Disable modules that don't work with Link Time Optimizations. Split up by arch.
 DISABLE_LTO_arm := libLLVMScalarOpts libjni_latinime_common_static libjni_latinime adbd nit libnetd_client libblas
-DISABLE_THINLTO_arm := libart libart-compiler libsigchain
+DISABLE_THINLTO_arm :=
 DISABLE_LTO_arm64 :=  libLLVMScalarOpts libjni_latinime_common_static libjni_latinime adbd nit libnetd_client libblas
-DISABLE_THINLTO_arm64 := libart libart-compiler libsigchain
+DISABLE_THINLTO_arm64 :=
 
 # Set DISABLE_LTO and DISABLE_THINLTO based on arch
 DISABLE_LTO := \
