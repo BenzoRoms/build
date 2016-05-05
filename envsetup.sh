@@ -219,6 +219,7 @@ function setpaths()
 
     unset ANDROID_PRODUCT_OUT
     export ANDROID_PRODUCT_OUT=$(get_abs_build_var PRODUCT_OUT)
+    export ANDROID_TARGET_DEVICE=$(get_build_var TARGET_DEVICE)
     export OUT=$ANDROID_PRODUCT_OUT
 
     unset ANDROID_HOST_OUT
