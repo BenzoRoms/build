@@ -339,10 +339,10 @@ ifeq ($(CORTEX_TUNINGS),true)
 
   ifneq ($(strip $(LOCAL_CLANG)),true)
    ifeq ($(filter $(LOCAL_DISABLE_CORTEX), $(LOCAL_MODULE)),)
-    ifdef LOCAL_CFLAGS_64
-     LOCAL_CFLAGS_64 += -mcpu=cortex-a57.cortex-a53 -mtune=cortex-a57.cortex-a53
+    ifdef LOCAL_CFLAGS
+     LOCAL_CFLAGS += -mcpu=cortex-a57.cortex-a53 -mtune=cortex-a57.cortex-a53
     else
-     LOCAL_CFLAGS_64 := -mcpu=cortex-a57.cortex-a53 -mtune=cortex-a57.cortex-a53
+     LOCAL_CFLAGS := -mcpu=cortex-a57.cortex-a53 -mtune=cortex-a57.cortex-a53
     endif
    endif
   endif
