@@ -332,8 +332,12 @@ endif
 ifeq ($(CORTEX_TUNINGS),true)
  ifndef LOCAL_IS_HOST_MODULE
  LOCAL_DISABLE_CORTEX := \
+	libaudioutils \
 	libmcldSupport \
 	libmcldScript \
+	libpixelflinger \
+	libwebrtc_system_wrappers \
+	libwifi-service \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
