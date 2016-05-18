@@ -115,6 +115,7 @@ ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
 	libRS \
 	libRSCpuRef \
 	libunwind_llvm \
+	libv8 \
 	libvixl \
 	libvterm \
 	libxml2

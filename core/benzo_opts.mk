@@ -387,6 +387,8 @@ LOCAL_DISABLE_GOMP := \
 	libperfprofdcore \
 	libperfprofdutils \
 	perfprofd \
+	libv8_32 \
+	libv8 \
 	$(NOOP_BLUETOOTH) \
 	$(NO_OPTIMIZATIONS)
 
