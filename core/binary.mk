@@ -205,6 +205,19 @@ else
     my_compiler := clang
 endif
 
+ifneq ($(strip $(LOCAL_CLANG)),true)
+ ifdef LOCAL_CFLAGS
+   LOCAL_CFLAGS += -g0
+  else
+   LOCAL_CFLAGS := -g0
+  endif
+  ifdef LOCAL_CPPFLAGS
+   LOCAL_CPPFLAGS += -g0
+  else
+   LOCAL_CPPFLAGS := -g0
+ endif
+endif
+
 # arch-specific static libraries go first so that generic ones can depend on them
 my_static_libraries := $(LOCAL_STATIC_LIBRARIES_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)) $(LOCAL_STATIC_LIBRARIES_$(my_32_64_bit_suffix)) $(my_static_libraries)
 my_whole_static_libraries := $(LOCAL_WHOLE_STATIC_LIBRARIES_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)) $(LOCAL_WHOLE_STATIC_LIBRARIES_$(my_32_64_bit_suffix)) $(my_whole_static_libraries)
