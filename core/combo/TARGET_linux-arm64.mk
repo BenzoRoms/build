@@ -74,7 +74,7 @@ TARGET_GLOBAL_CFLAGS += \
 android_config_h := $(call select-android-config-h,linux-arm64)
 
 TARGET_GLOBAL_CFLAGS += \
-			-fstack-protector-strong \
+			-fstack-protector \
 			-ffunction-sections \
 			-fdata-sections \
 			-funwind-tables \
