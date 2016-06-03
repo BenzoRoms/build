@@ -38,7 +38,6 @@ PRODUCT_PACKAGES += \
     libFFTEm \
     libGLESv1_CM \
     libGLESv2 \
-    libGLESv3 \
     libbinder \
     libc \
     libcutils \
