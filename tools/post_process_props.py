@@ -23,7 +23,7 @@ import sys
 # See PROP_NAME_MAX and PROP_VALUE_MAX system_properties.h.
 # The constants in system_properties.h includes the termination NUL,
 # so we decrease the values by 1 here.
-PROP_NAME_MAX = 31
+PROP_NAME_MAX = 35
 PROP_VALUE_MAX = 95
 
 # Put the modifications that you need to make into the /system/build.prop into this
