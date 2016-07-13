@@ -114,6 +114,7 @@ ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
 	libprotobuf-cpp-lite \
 	libRS \
 	libRSCpuRef \
+	libstagefright_omx \
 	libunwind_llvm \
 	libv8 \
 	libvixl \

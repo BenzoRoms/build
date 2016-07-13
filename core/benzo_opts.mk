@@ -188,6 +188,7 @@ ifeq ($(GRAPHITE_OPTS),true)
 	libicui18n \
 	libselinux \
 	libsfntly \
+	libhevcdec \
 	libharfbuzz_ng \
 	libpdfiumcore \
 	libpdfium \
