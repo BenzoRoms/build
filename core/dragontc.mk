@@ -23,11 +23,11 @@ POLLY := -mllvm -polly \
   -mllvm -polly-run-dce
 
 # Enable version specific Polly flags.
-ifeq (1,$(words $(filter 3.7 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
+ifeq (1,$(words $(filter 3.7 3.8 3.9 4.0,$(LLVM_PREBUILTS_VERSION))))
   POLLY += -mllvm -polly-dependences-computeout=0 \
     -mllvm -polly-dependences-analysis-type=value-based
 endif
-ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
+ifeq (1,$(words $(filter 3.8 3.9 4.0,$(LLVM_PREBUILTS_VERSION))))
   POLLY += -mllvm -polly-position=after-loopopt \
     -mllvm -polly-run-inliner \
     -mllvm -polly-detect-keep-going \
@@ -90,7 +90,7 @@ DISABLE_POLLY_arm64 := \
   bcc_strip_attr
 
 # Add version specific disables.
-ifeq (1,$(words $(filter 3.8 3.9,$(LLVM_PREBUILTS_VERSION))))
+ifeq (1,$(words $(filter 3.8 3.9 4.0,$(LLVM_PREBUILTS_VERSION))))
   DISABLE_POLLY_arm64 += \
 	healthd \
 	libandroid_runtime \
