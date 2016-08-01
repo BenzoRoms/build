@@ -206,6 +206,33 @@ else
     my_compiler := clang
 endif
 
+# Force ARM Instruction Set
+ifeq ($(ENABLE_ARM_MODE),true)
+ ifndef LOCAL_IS_HOST_MODULE
+  ifneq (1,$(words $(filter $(DISABLE_ARM_MODE),$(LOCAL_MODULE))))
+    ifeq ($(TARGET_ARCH),arm)
+      ifeq ($(LOCAL_ARM_MODE),)
+        LOCAL_ARM_MODE := arm
+        my_cflags :=  $(filter-out -mthumb,$(my_cflags))
+      endif
+    endif
+    ifeq ($(TARGET_ARCH),arm64)
+     ifeq ($(LOCAL_ARM_MODE),)
+      ifneq ($(TARGET_2ND_ARCH),)
+        LOCAL_ARM_MODE := arm
+        my_cflags :=  $(filter-out -mthumb,$(my_cflags))
+      else
+        LOCAL_ARM_MODE := arm64
+      endif
+     endif
+    endif
+  else
+    LOCAL_ARM_MODE := thumb
+    my_cflags :=  $(filter-out -marm,$(my_cflags))
+  endif
+ endif
+endif
+
 # arch-specific static libraries go first so that generic ones can depend on them
 my_static_libraries := $(LOCAL_STATIC_LIBRARIES_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)) $(LOCAL_STATIC_LIBRARIES_$(my_32_64_bit_suffix)) $(my_static_libraries)
 my_whole_static_libraries := $(LOCAL_WHOLE_STATIC_LIBRARIES_$($(my_prefix)$(LOCAL_2ND_ARCH_VAR_PREFIX)ARCH)) $(LOCAL_WHOLE_STATIC_LIBRARIES_$(my_32_64_bit_suffix)) $(my_whole_static_libraries)
