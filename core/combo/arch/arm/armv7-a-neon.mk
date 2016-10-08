@@ -25,7 +25,7 @@ ifeq ($(strip $(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)),cortex-a8)
 		-Wl,--fix-cortex-a8
 else
 ifneq (,$(filter cortex-a7 cortex-a53 cortex-a53.a57,$(TARGET_$(combo_2nd_arch_prefix)CPU_VARIANT)))
-	arch_variant_cflags := -mcpu=cortex-a7
+	arch_variant_cflags := -mcpu=cortex-a8
 
 	local_arch_has_lpae := true
 	arch_variant_ldflags := \
