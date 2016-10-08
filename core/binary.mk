@@ -253,6 +253,7 @@ my_cppflags := $(my_cpp_std_version) $(my_cppflags)
 # Include DragonTC Optimizations
 ifneq ($(DISABLE_DTC_OPTS),true)
   include $(BUILD_SYSTEM)/dragontc.mk
+  include $(BUILD_SYSTEM)/benzo_opts.mk
 endif
 
 # arch-specific static libraries go first so that generic ones can depend on them

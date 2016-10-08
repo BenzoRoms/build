@@ -134,6 +134,11 @@ TARGET_RELEASE_CFLAGS := \
 			-frerun-cse-after-loop \
 			-frename-registers
 
+# Disable warnings and debug
+TARGET_GLOBAL_CFLAGS += -w -g0
+TARGET_GLOBAL_LDFLAGS += -w -g0
+TARGET_GLOBAL_CPPFLAGS += -w -g0
+
 libc_root := bionic/libc
 libm_root := bionic/libm
 
