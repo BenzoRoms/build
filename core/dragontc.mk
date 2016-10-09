@@ -21,7 +21,7 @@ BLUETOOTH := libbluetooth_jni bluetooth.mapsapi bluetooth.default bluetooth.maps
 
 # Disable modules that don't work with DragonTC. Split up by arch.
 DISABLE_DTC_arm :=
-DISABLE_DTC_arm64 :=
+DISABLE_DTC_arm64 := libbnnmlowpV8 libF77blasV8 libF77blas libRSSupport
 
 # Set DISABLE_DTC based on arch
 DISABLE_DTC := \
@@ -103,7 +103,6 @@ DISABLE_POLLY_arm64 := \
   libaudioflinger \
   libstagefright% \
   libart \
-  libF77blas \
   libFFTEm \
   libRSCpuRef \
   libbnnmlowp \
