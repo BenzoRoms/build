@@ -44,9 +44,9 @@ ifeq ($(my_clang),true)
  ifneq ($(strip $(LOCAL_IS_HOST_MODULE)),true)
    ifeq ($(filter $(DISABLE_BENZO), $(LOCAL_MODULE)),)
 
-    my_conlyflags += -fgcse-after-reload -fgcse-las -fgcse-sm -ftree-slp-vectorize -fvect-cost-model -fgcse-after-reload -fivopts -fomit-frame-pointer -fweb \
-	             -ffunction-sections -fdata-sections -ftracer -funsafe-loop-optimizations -funswitch-loops -fforce-addr -funroll-loops -ffp-contract=fast \
-                     -frename-registers -ftree-slp-vectorize -fvect-cost-model -ffast-math
+    my_conlyflags += -pipe -ftree-slp-vectorize -fomit-frame-pointer -ffunction-sections -fdata-sections \
+	             -fforce-addr -funroll-loops -ffp-contract=fast -ftree-slp-vectorize -fno-signed-zeros \
+                     -freciprocal-math -inline -loop-deletion -ffast-math
     my_ldflags += -Wl,--as-needed -Wl,--gc-sections -Wl,--relax -Wl,--sort-common
   endif
  endif
