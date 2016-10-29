@@ -26,7 +26,8 @@ fi
 if [ -n "$AB_OTA_UPDATER" ] ; then
   echo "ro.build.ab_update=$AB_OTA_UPDATER"
 fi
-echo "ro.product.model=$PRODUCT_MODEL"
+echo "ro.product.model=Pixel"
+echo "ro.product.real.model=$PRODUCT_MODEL"
 echo "ro.product.brand=$PRODUCT_BRAND"
 echo "ro.product.name=$PRODUCT_NAME"
 echo "ro.product.device=$TARGET_DEVICE"
@@ -61,5 +62,5 @@ if [ -n "$BUILD_THUMBPRINT" ] ; then
   echo "ro.build.thumbprint=$BUILD_THUMBPRINT"
 fi
 echo "ro.build.characteristics=$TARGET_AAPT_CHARACTERISTICS"
-
+echo "ro.opa.eligible_device=true"
 echo "# end build properties"
