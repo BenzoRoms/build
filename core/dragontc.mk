@@ -26,7 +26,7 @@ ifeq ($(DRAGONTC_VERSION),3.8)
 endif
 ifeq ($(DRAGONTC_VERSION),3.9)
    DISABLE_DTC_arm :=
-   DISABLE_DTC_arm64 := libm librsjni libblasV8 libRSSupport% libc libclcore libart libart-compiler libsigchain dalvikvm dex2oat dexdump libLLVMCodeGen libdng_sdk libdng%
+   DISABLE_DTC_arm64 := libm librsjni libblasV8 libF77blasV8 libF77blas libRSSupport% libc libclcore libart libart-compiler libsigchain dalvikvm dex2oat dexdump libLLVMCodeGen libdng_sdk libdng% libbnnmlowpV8 libgiftranscode memtest
 endif
 ifeq ($(DRAGONTC_VERSION),4.0)
    DISABLE_DTC_arm :=
