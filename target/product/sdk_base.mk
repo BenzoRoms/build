@@ -26,7 +26,6 @@ PRODUCT_PACKAGES := \
 	Fallback \
 	Gallery \
 	GestureBuilder \
-	Launcher3 \
 	LegacyCamera \
 	librs_jni \
 	LiveWallpapersPicker \
