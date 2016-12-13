@@ -30,7 +30,7 @@ ifeq ($(DRAGONTC_VERSION),3.9)
 endif
 ifeq ($(DRAGONTC_VERSION),4.0)
    DISABLE_DTC_arm :=
-   DISABLE_DTC_arm64 := libm librsjni libblasV8 libF77blasV8 libF77blas libRSSupport% libc libclcore libart libart-compiler libsigchain dalvikvm dex2oat dexdump libLLVMCodeGen libdng_sdk libdng% libbnnmlowpV8
+   DISABLE_DTC_arm64 := libm librsjni libblasV8 libF77blasV8 libF77blas libRSSupport% libc libclcore libart libart-compiler libsigchain dalvikvm dex2oat dexdump libLLVMCodeGen libdng_sdk libdng% libbnnmlowpV8 libLLVMARMCodeGen libLLVMAArch64CodeGen libjni_filtershow_filters
 endif
 
 # Set DISABLE_DTC based on arch
@@ -128,7 +128,9 @@ DISABLE_POLLY_arm64 := \
   libmpeg2dec \
   libcrypto_static \
   libcrypto \
-  libyuv%
+  libyuv% \
+  libjni_gallery_filters \
+  libLLVMSelectionDAG
 
 # Set DISABLE_POLLY based on arch
 DISABLE_POLLY := \
