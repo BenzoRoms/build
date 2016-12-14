@@ -1,5 +1,11 @@
 # Put some miscellaneous rules here
 
+# Colors for logo
+CL_GRN="\033[32m"
+CL_CYN="\033[36m"
+CL_BNK=""
+CL_RST="\033[0m"
+
 # HACK: clear LOCAL_PATH from including last build target before calling
 # intermedites-dir-for
 LOCAL_PATH := $(BUILD_SYSTEM)
@@ -1980,18 +1986,18 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 benzo: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(CUSTOM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(CUSTOM_TARGET_PACKAGE) > $(CUSTOM_TARGET_PACKAGE).md5sum
-	@echo -e ""
-	@echo -e " ▄▄▄▄   ▓█████  ███▄    █ ▒███████▒ ▒█████   ██▀███   ▒█████   ███▄ ▄███▓"
-	@echo -e "▓█████▄ ▓█   ▀  ██ ▀█   █ ▒ ▒ ▒ ▄▀░▒██▒  ██▒▓██ ▒ ██▒▒██▒  ██▒▓██▒▀█▀ ██▒"
-	@echo -e "▒██▒ ▄██▒███   ▓██  ▀█ ██▒░ ▒ ▄▀▒░ ▒██░  ██▒▓██ ░▄█ ▒▒██░  ██▒▓██    ▓██░"
-	@echo -e "▒██░█▀  ▒▓█  ▄ ▓██▒  ▐▌██▒  ▄▀▒   ░▒██   ██░▒██▀▀█▄  ▒██   ██░▒██    ▒██ "
-	@echo -e "░▓█  ▀█▓░▒████▒▒██░   ▓██░▒███████▒░ ████▓▒░░██▓ ▒██▒░ ████▓▒░▒██▒   ░██▒"
-	@echo -e "░▒▓███▀▒░░ ▒░ ░░ ▒░   ▒ ▒ ░▒▒ ▓░▒░▒░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░   ░  ░"
-	@echo -e "▒░▒   ░  ░ ░  ░░ ░░   ░ ▒░░░▒ ▒ ░ ▒  ░ ▒ ▒░   ░▒ ░ ▒░  ░ ▒ ▒░ ░  ░      ░"
-	@echo -e " ░    ░    ░      ░   ░ ░ ░ ░ ░ ░ ░░ ░ ░ ▒    ░░   ░ ░ ░ ░ ▒  ░      ░   "
-	@echo -e " ░         ░  ░         ░   ░ ░        ░ ░     ░         ░ ░         ░   "
-	@echo -e "      ░                   ░                                              "
-	@echo -e "Bacons Ready!!: $(CUSTOM_TARGET_PACKAGE)"
+	@echo -e ${CL_BNK}""${CL_BNK}
+	@echo -e ${CL_CYN}" ▄▄▄▄   ▓█████  ███▄    █ ▒███████▒ ▒█████   ██▀███   ▒█████   ███▄ ▄███▓"${CL_RST}
+	@echo -e ${CL_CYN}"▓█████▄ ▓█   ▀  ██ ▀█   █ ▒ ▒ ▒ ▄▀░▒██▒  ██▒▓██ ▒ ██▒▒██▒  ██▒▓██▒▀█▀ ██▒"${CL_RST}
+	@echo -e ${CL_CYN}"▒██▒ ▄██▒███   ▓██  ▀█ ██▒░ ▒ ▄▀▒░ ▒██░  ██▒▓██ ░▄█ ▒▒██░  ██▒▓██    ▓██░"${CL_RST}
+	@echo -e ${CL_CYN}"▒██░█▀  ▒▓█  ▄ ▓██▒  ▐▌██▒  ▄▀▒   ░▒██   ██░▒██▀▀█▄  ▒██   ██░▒██    ▒██ "${CL_RST}
+	@echo -e ${CL_CYN}"░▓█  ▀█▓░▒████▒▒██░   ▓██░▒███████▒░ ████▓▒░░██▓ ▒██▒░ ████▓▒░▒██▒   ░██▒"${CL_RST}
+	@echo -e ${CL_CYN}"░▒▓███▀▒░░ ▒░ ░░ ▒░   ▒ ▒ ░▒▒ ▓░▒░▒░ ▒░▒░▒░ ░ ▒▓ ░▒▓░░ ▒░▒░▒░ ░ ▒░   ░  ░"${CL_RST}
+	@echo -e ${CL_CYN}"▒░▒   ░  ░ ░  ░░ ░░   ░ ▒░░░▒ ▒ ░ ▒  ░ ▒ ▒░   ░▒ ░ ▒░  ░ ▒ ▒░ ░  ░      ░"${CL_RST}
+	@echo -e ${CL_CYN}" ░    ░    ░      ░   ░ ░ ░ ░ ░ ░ ░░ ░ ░ ▒    ░░   ░ ░ ░ ░ ▒  ░      ░   "${CL_RST}
+	@echo -e ${CL_CYN}" ░         ░  ░         ░   ░ ░        ░ ░     ░         ░ ░         ░   "${CL_RST}
+	@echo -e ${CL_CYN}"      ░                   ░                                              "${CL_RST}
+	@echo -e ${CL_GRN}"Bacons Ready!!:"${CL_RST}" $(CUSTOM_TARGET_PACKAGE)"
 
 bootzip: bootimage
 	   $(BOOT_ZIP_FROM_IMAGE_SCRIPT) \
