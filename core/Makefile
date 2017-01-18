@@ -1131,7 +1131,7 @@ endif
 # Create bash symlink to sh
 define create-bash-sh-symlink
   $(hide) rm $(TARGET_OUT)/bin/sh
-  $(hide) ln -sf /system/bin/bash $(TARGET_OUT)/bin/sh
+  $(hide) ln -sf /system/xbin/bash $(TARGET_OUT)/bin/sh
 endef
 
 # Only Create symlink /system/vendor to /vendor if necessary.
