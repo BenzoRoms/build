@@ -2881,6 +2881,11 @@ $(strip $(if $(filter $(TARGET_ARCH),$(1)),$(TARGET_ARCH),\
   $(if $(filter $(TARGET_2ND_ARCH),$(1)),$(TARGET_2ND_ARCH),$(if $(1),none))))
 endef
 
+# $1 is the variable name to increment
+define inc_and_print
+$(strip $(eval $(1) := $($(1)) .)$(words $($(1))))
+endef
+
 ###########################################################
 ## Other includes
 ###########################################################
