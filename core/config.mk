@@ -59,6 +59,9 @@ SRC_HEADERS := \
 SRC_HOST_HEADERS:=$(TOPDIR)tools/include
 SRC_LIBRARIES:= $(TOPDIR)libs
 SRC_SERVERS:= $(TOPDIR)servers
+
+UNAME := $(shell uname -sm)
+
 SRC_TARGET_DIR := $(TOPDIR)build/target
 SRC_API_DIR := $(TOPDIR)prebuilts/sdk/api
 SRC_SYSTEM_API_DIR := $(TOPDIR)prebuilts/sdk/system-api
