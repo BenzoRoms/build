@@ -55,9 +55,9 @@ ifeq ($(my_clang),true)
   ifeq (1,$(words $(filter $(DISABLE_DTC),$(LOCAL_MODULE))))
     my_cc := $(AOSP_CLANG)
     my_cxx := $(AOSP_CLANG_CXX)
-    CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=cortex-a15
+    CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=cortex-a53
   else
-    CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=cortex-a15
+    CLANG_CONFIG_arm_EXTRA_CFLAGS += -mcpu=cortex-a53
   endif
 endif
 
